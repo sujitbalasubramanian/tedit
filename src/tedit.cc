@@ -1,17 +1,7 @@
-#include <ftxui/dom/elements.hpp>
-#include <ftxui/screen/screen.hpp>
-#include <iostream>
-
+#include <unistd.h>
 int main() {
-  using namespace ftxui;
-
-  Element document = hbox({
-      text("left") | border,
-      text("middle") | border | flex,
-      text("right") | border,
-  });
-
-  auto screen = Screen::Create(Dimension::Full(), Dimension::Fit(document));
-  Render(screen, document);
-  screen.Print();
+  char c;
+  while (read(STDIN_FILENO, &c, 1) == 1 && c != 'q')
+    ;
+  return 0;
 }
